@@ -9,7 +9,7 @@ const app = express();
 const server = http.createServer(app);
 const io = socketio.listen(server);
 
-mogoose.connect('mongodb://localhost/chat-database')
+mogoose.connect('mongodb+srv://chuy99:postgres@cluster0-2yw28.mongodb.net/test?retryWrites=true&w=majority')
     .then(db => console.log('db is connected'))
     .catch(err => console.log(err));
 
