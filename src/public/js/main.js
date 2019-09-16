@@ -1,6 +1,6 @@
 $(function() {
     // alert('works!');
-    const socket = io();
+    const socket = io.connect('https://chat-javascript12.herokuapp.com', { 'forceNew': true });;
 
     //obteniendo los elementos del DOM desde de interface
     const $messageForm = $("#message-form");
@@ -33,7 +33,8 @@ $(function() {
 
     $messageForm.submit( e => {
         e.preventDefault();
-        socket.emit('send message', $messageBox.val(), data => {
+        socket.emit('send message', escape($messageBox.val()), data => {
+            console.log(escape($messageBox.val()));
             $chat.append(`
                 <p class="error">${data}</p>
             `);
